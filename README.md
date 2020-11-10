@@ -1,2 +1,2 @@
 # Sequence-Modelling
-Generating names with a character level RNN
+In this project we are generating random names using the character level RNN. The RNN model is built using PyTorch.
