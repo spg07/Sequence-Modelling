@@ -3,7 +3,8 @@ from DataLoader import *
 import torch
 
 def randomChoice(l):
-    return l[random.randint(0, len(l) -1)]
+    return l[random.randint(0, len(l) - 1)]
+
 
 def randomTrainingPair():
     category = randomChoice(all_categories)
@@ -16,17 +17,18 @@ def categoryTensor(category):
     tensor[0][li] = 1
     return tensor
 
+
 def inputTensor(line):
     tensor = torch.zeros(len(line), 1, n_letters)
     for li in range(len(line)):
         letter = line[li]
         tensor[li][0][all_letters.find(letter)] = 1
-
     return tensor
+
 
 def targetTensor(line):
     letter_indexes = [all_letters.find(line[li]) for li in range(1, len(line))]
-    letter_indexes.append(n_letters - 1)
+    letter_indexes.append(n_letters - 1) # EOS
     return torch.LongTensor(letter_indexes)
 
 def randomTrainingExample():
